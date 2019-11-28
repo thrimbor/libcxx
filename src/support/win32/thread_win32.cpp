@@ -132,7 +132,11 @@ int __libcpp_condvar_timedwait(__libcpp_condvar_t *__cv, __libcpp_mutex_t *__m,
 
 int __libcpp_condvar_destroy(__libcpp_condvar_t *__cv)
 {
+#ifdef NXDK
+  DestroyConditionVariable((PCONDITION_VARIABLE)__cv);
+#else
   static_cast<void>(__cv);
+#endif
   return 0;
 }
 
