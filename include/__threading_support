@@ -97,8 +97,13 @@ typedef void* __libcpp_recursive_mutex_t[5];
 #endif
 
 // Condition Variable
+#ifdef NXDK
+typedef void* __libcpp_condvar_t[4];
+#define _LIBCPP_CONDVAR_INITIALIZER {static_cast<void*>(0), static_cast<void*>(0), static_cast<void*>(0), static_cast<void*>(0)}
+#else
 typedef void* __libcpp_condvar_t;
 #define _LIBCPP_CONDVAR_INITIALIZER 0
+#endif
 
 // Execute Once
 typedef void* __libcpp_exec_once_flag;
